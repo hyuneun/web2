@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#container{
+	font-size: 14px; margin: 10px;
+}
+h2{
+	font-size: 1.3em; margin-bottom: .5em;
+}
+.label{
+width: 130px; margin: .5em;
+}
+
+.myhover{
+	cursor: pointer; background: #ffc;
+}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var speech = $("div.speech");
+	var defaultsize = speech.css("fontSize");
+	
+	//문서의 일부 접기 효과 
+	var firstPara = $("p:eq(1)");
+	firstPara.hide();
+	
+	$("a.more").click(function(){
+		if(firstPara.is(":hidden")){
+			//firstPara.fadeIn("slow");
+			firstPara.slideToggle("slow");
+			$(this).text("read less")
+		}else{
+			//firstPara.fadeOut("slow")
+			firstPara.slideToggle("slow");
+			$(this).text("read more")
+		}
+	});
+	
+	$("#switcher button").click(function(){
+		//alert("message")
+		var num = parseFloat(speech.css("fontSize"), 10);//parseFloat 단위는버림(px등등)
+		//alert(num)
+		switch(this.id){
+		case "btn_large":
+			num += 8;
+		break;
+		case "btn_small":
+		num -= 8;
+		break;
+		default:
+			num = parseFloat(defaultsize,10);
+		}
+		
+		speech.animate({fontSize:num + 'px'}, 10);//fast slow 숫자는 작을수록 빠름
+
+	});
+	
+	//hover 이벤트 : hover(핸들러1,핸들러2);
+	$("button , a.more").hover(
+		function(){
+			$(this).addClass('myhover');
+		},		
+		function(){
+			$(this).removeClass('myhover');
+		}
+	);
+});
+</script>
+</head>
+<body>
+<div id="container">
+<h2>텍스트 효과연습</h2>
+<div id="switcher">
+<div id="label">글자크기변경</div>
+<button id="btn_default">보통</button>
+<button id="btn_large">크게</button>
+<button id="btn_small">작게</button>
+</div>
+<div class="speech">
+<p>태극전사들이 조별리그 1, 2차전이 열린 사우바도르와 작별했다.</p>
+<p>3차전은 브라질의 수도에서 열린다. 신태용호는 8일(이하 한국시각)
+ 오후 브라질리아에 입성했다. 8강 진출 운명이 이곳에서 결정된다. 
+ 한국은 11일 오전 4시(이하 한국시각) 멕시코와 2016년 리우올림픽
+  조별리그 C조 최종전을 치른다.</p>
+<a href="#"class="more">read more</a>
+<p>공격은 옵션이 넘친다. 독일전 3골은 황희찬(잘츠부르크) 손흥민(토트넘) 석현준(FC포르투)
+ 등 유럽파가 장식했다. 피지전에서 해트트릭을 작성한 류승우(레버쿠젠)를 아끼며
+  후반 36분 교체출전 시킬 정도로 여유가 있었다.</p>
+</div>
+</div>
+</body>
+</html>

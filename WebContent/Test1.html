@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#frm").submit(function(){
+		if($("#sang").val() === ""){
+            alert("품명을 입력하시오");
+            return;
+         }else if(isNaN($("#sang").val()) === false){
+            alert("문자만을 입력하시오");
+            $("#sang").val("");
+            return;
+         }
+		
+		if($("#su").val() === ""){
+            alert("점수을 입력하시오");
+            return;
+         }else if(isNaN(parseInt($("#su").val()))){
+            alert("숫자만을 입력하시오");
+            $("#su").val("");
+            return;
+         }
+		
+		if($("#dan").val() === ""){
+            alert("점수을 입력하시오");
+            return;
+         }else if(isNaN(parseInt($("#dan").val()))){
+            alert("숫자만을 입력하시오");
+            $("#dan").val("");
+            return;
+         }
+	})
+	
+
+   
+
+})
+</script>
+</head>
+<body>
+** 자료 입력**<p/>
+<form action="jq6ex.jsp" id="frm">
+학생명 : <input type="text" id="sang" name="a" maxlength="15"><br/>
+국어 : <input type="text" id="su" name="b" maxlength="2"><br/>
+영어 : <input type="text" id="dan" name="c" maxlength="2"><br/>
+<input type="submit" value="전송" />
+<button type="reset">취소</button>         <!-- form tag 내의 button은 Enter이벤트가 기본 장착 -->
+</form>
+</body>
+</html>

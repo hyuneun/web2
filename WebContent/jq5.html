@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+function tdClick(data){
+	alert(data)
+}
+
+$(document).ready(function(){
+	
+	$("td").click(function(){
+		$("#show").html($(this).text());
+	})
+	
+	$("#dbl").dblclick(function(){
+		$("#show").html($(this).text());
+	})
+	
+	$("#txtA").keydown(function(event){
+		$("#txtCode").val(event.keyCode);
+	});
+	
+	//이벤트 binding
+	//$("#btn").click(function(){		});
+	$("#btn").bind("click", function(){
+		alert("클릭이벤트")
+		$("#btn").unbind("click");
+	});
+	
+	var count = 0;
+	$("#myarea").bind("mouseenter mouseleave", function(event){
+		count++;
+		$("#myresult").text(count + "회 enter or leave")
+		
+		if(event.type === "mouseenter"){
+			$("#myresult").css("background", "red")
+			
+		}else if(event.type === "mouseleave"){
+			$("#myresult").css("background", "white")
+		}
+	})
+	
+	// on 메소드
+	/* $("#btnadd").click(function(){
+		$("ul").append("<li>list item" + $("li").length + "</li>")
+	})
+	$("li").click(function(){
+		alert($(this).text());
+	}) */
+	
+	$("#btnadd").on("click", function(){
+		$("ul").append("<li>list item" + $("li").length + "</li>")
+	})
+	
+	$(document).on("click","li", function(){
+		alert($(this).text());
+	})
+	
+	$("#btndie").on("click", function(){
+		$(document).off("click", "li")
+	})
+	
+	
+})
+</script>
+</head>
+<body>
+** 이벤트 연습 **<p/>
+<table border="1" width="200">
+<tr>
+<td onclick="tdClick('dlxkclRjwu')">kbs</td>
+<td>mbc</td>
+<td>sbs</td>
+</tr>
+</table>
+
+<br>
+<div id="show"></div>
+<hr>
+<div id="dbl">더블클릭대상이여</div>
+<br>
+키보드입력:<br>
+<input type="text" id="txtA"><br>
+<input type="text" id="txtCode" readonly="readonly">
+<br><br><br>
+<button id="btn">bind 이벤트 연습</button>
+<br>
+<br>
+<span id="myarea" style="background-color: yellow">마우스올리고내리기</span>
+<br>
+<div id="myresult">결과</div>
+<p>
+**라이브 이벤트 연습 **<br>
+<div>
+<ul>
+<li>list item0</li>
+</ul>
+<input type="button" id="btnadd" value="요소추가">
+<input type="button" id="btndie" value="이벤트해제">
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

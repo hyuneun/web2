@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.imge{
+	position: absolute; top: 10px; left: 10px;
+}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".imge").hide();
+	
+	$(".imge:first").fadeIn("slow");
+	
+	var next;
+	
+	$(".imge").click(function(){
+		$(this).fadeIn("slow")
+		//alert($(this).next().length) 조건?참일떄:거짓일때
+		next = ($(this).next().length)?$(this).next():$(".imge:first")
+				$(this).fadeOut('slow')
+				next.fadeIn('slow')
+				
+				event.preventDefault()
+	})
+})
+</script>
+</head>
+<body>
+<a class="imge" href="">
+	<img src="images/p1.jpg" width="300px" height="300px">
+</a>
+<a class="imge" href="">
+	<img src="images/p2.jpg" width="300px" height="300px">
+</a>
+<a class="imge" href="">
+	<img src="images/p3.jpg" width="300px" height="300px">
+</a>
+<a class="imge" href="">
+	<img src="images/p4.jpg" width="300px" height="300px">
+</a>
+<a class="imge" href="">
+	<img src="images/p5.jpg" width="300px" height="300px">
+</a>
+<a class="imge" href="">
+	<img src="images/p6.jpg" width="300px" height="300px">
+</a>
+</body>
+</html>

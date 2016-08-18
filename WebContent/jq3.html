@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var p = $("p");
+		//alert(p.length + "  " + p.size())
+		p[0].style.color = "red";//js
+		p[1].style.color = "blue";
+		p[2].style.color = "green";
+		
+		$("p").eq(3).css("color","aqua")//jq
+		//alert($("p").index($(".kbs")))
+		$("p").eq($("p").index($(".kbs"))).css("color","yellow");
+		
+		var arr = $("h1~p") // 요소1에서부터 검색을시작
+		//alert(arr.length)
+	
+		var result = "";
+		for (var i = 0; i < arr.length; i++) {
+			//result += arr[i].innerHTML + ", ";//js
+			//result += arr[i].innerText + ", ";//js
+			//result += $(arr[i]).html() + ", ";//jquery
+			//result += $(arr[i]).text() + ", ";//jquery
+		}
+		//alert(result)
+		 var arr2 = $("p:not(.kbs)");//부정(kbs제외)
+		 //alert(arr2.length)
+		 
+		 //실행중에 요소추가
+		 //$("b").prepend("<h2>요소추가(기존요소앞)</h2>");
+		 $("<h2>요소추가(기존요소앞에)</h2>").prependTo("b");
+		 //$("b").append("<h1>요소추가(기존요소뒤)</h1>");
+		 $("<h1>요소추가(기존요소뒤에)</h1>").appendTo("b");
+		 
+		 //반복처리
+		 var ss = "";
+		 var arr3 = $("li");
+		 //alert(arr3.length)
+		 $("li").each(function(){
+			 ss += $(this).text() //this는 현재요소를 의미
+		 })
+		 //alert(ss)
+		 
+		 //사용자 정의 선택자
+		 $("tbody tr:odd").css("background-color","green")// :odd 홀수요소
+		 $("tbody tr:even").css("background-color","aqua")// :even 짝수요소
+		 $("tbody tr:eq(1)").css("background-color","blue")//index
+		 $("tbody tr:gt(3)").css("background-color","red")//index보다큰
+		 $("tbody tr:lt(3)").css("background-color","cyan")//index보다작은
+		 $("tbody tr:contains('한국')").css("font-size","40px")//문자포함
+		 
+		 
+	})
+	</script>
+</head>
+<body>
+<p>jquery연습</p>
+<h1>요소배열</h1>
+<p><i>p요소</i></p>
+<p>p요소2</p>
+<p class="kbs">p요소3</p>
+<hr>
+
+문서에 문자열 추가<br>
+<b style="background-color: orange;">대한민국</b>
+<hr>
+** 반복처리(each) *** <br>
+<ul>
+	<li><i>윈도우</i></li>
+	<li>리눅스</li>
+	<li>맥</li>
+</ul>
+
+<ol>
+	<li>오라클</li>
+	<li>마리아디비</li>
+</ol>
+
+<hr>
+<table style="border: 1px solid;">
+<thead>
+<tr><th>이름</th><th>전화</th></tr>
+</thead>
+<tbody>
+<tr><th>한국인</th><th>1234-5648</th></tr>
+<tr><th>미국인</th><th>1222-5648</th></tr>
+<tr><th>영국인</th><th>1333-6468</th></tr>
+<tr><th>중국인</th><th>1444-5648</th></tr>
+<tr><th>태국인</th><th>1284-5728</th></tr>
+</tbody>
+</table>
+
+</body>
+</html>

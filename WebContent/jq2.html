@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("div > a[target]").css("background-color", "#aaa"); //[]속성값
+		$("div > a[href='http://naver.com']").css("background-color", "#ff0");
+		$("div > a[href !='http://naver.com']").css("font-size", "30px");
+
+		//patten
+		$("div[id ='content-1']").css("background-color", "#abc");
+		$("div[id ^='content-']").css("background-color", "#def");// ^ 해당글자로시작되는
+		$("div[id $='-1']").css("background-color", "#fed");// $ 해당글자로끝나는
+
+		//특정단어가 포함된
+		$("input[name='한국']").css("background-color", "red");
+		$("input[name*='한국']").css("background-color", "yellow");// * 포함된
+		$("input[name~='한국']").css("background-color", "silver");// ! 독립단어
+
+	});
+</script>
+</head>
+<body>
+	일반 텍스트
+	<br>
+	<img src="image/img1.jpg" title="구글?" />
+	<hr>
+	<h2>jquery 셀렉터중 속성연습</h2>
+	<a href="http://naver.com">naver</a>
+	</br>
+	<div>
+		<p>셀렉연습1</p>
+		<a href="http://naver.com">naver target:x</a></br> <a
+			href="http://naver.com" target="_blank">naver target:o</a></br> <a
+			href="http://daum.net">daum target:x</a></br> <a href="http://daum.net"
+			target="_blank">daum target:o</a></br> <a href="http://korea.com">korea
+			target:x</a></br> <a href="http://korea.com" target="new">korea target:o</a></br>
+	</div>
+	</p>
+	<div>
+		<p>id값에 특정패턴적용</p>
+		<div id="content-1">div content 1</div>
+		<div id="content-2">div content 2</div>
+		<div id="view-1">view content 1</div>
+		<div id="content-3">div content 3</div>
+	</div>
+	</p>
+	<div>
+		<p>특정값이 포함된 자료 적용</p>
+		<input name="한국" value="한국 독립 단어" /> <input name="한국인"
+			value="한국 포함 단어" /> <input name="한 국인" value="한국이 없는 단어" /> <input
+			name="대한한국" value="한국 포함 단어2" />
+	</div>
+</body>
+</html>

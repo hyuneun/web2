@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.hov{
+	background-color: blue;
+	color: white;
+}
+.page{
+	margin: 5px;
+}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//tr 반전
+	$("tbody > tr").hover(
+		function(){
+			$(this).find("td").addClass("hov")
+		},		
+		function(){
+			$(this).find("td").removeClass("hov")
+		}
+	);
+	//페이징
+	var rows = $("table").find("tbody tr").length;
+	//alert(rows)
+	var per_page = 3;
+	var num_page = Math.ceil(rows / per_page); //페이지수 얻기
+	
+	var pNumbers = $("<div id='pages'></div>")
+	for (var i = 0; i < num_page; i++) {
+		$("<span class='page'>" + (i + 1) + "</span>").appendTo(pNumbers);
+	}
+	pNumbers.insertAfter("table");
+	
+	//페이지에 링크걸기
+	$(".page").hover(		
+		function(){
+			$(this).addClass("hov")
+		},		
+		function(){
+			$(this).removeClass("hov")
+		}
+	)
+	
+	$("table").find("tbody tr").hide();
+	var t = $("table tbody tr")
+
+	for (var j = 0; j < per_page; j++) {
+		$(t[j]).show();
+	}
+	
+	$("span").click(function(){
+		$("table").find("tbody tr").hide();
+		for (var k = ($(this).text() - 1) * per_page;
+			k < ($(this).text() * per_page);
+				k++) {
+			
+			$(t[k]).show();
+			
+		}
+	});
+	
+})
+</script>
+</head>
+<body>
+테이블 행 하이라이트<p/>
+<table border="1">
+	<thead><tr><td>사원</td><td>직원명</td></tr></thead>
+	<tbody>
+	<tr><td>1</td><td>직원명1</td></tr>
+	<tr><td>2</td><td>직원명2</td></tr>
+	<tr><td>3</td><td>직원명3</td></tr>
+	<tr><td>4</td><td>직원명4</td></tr>
+	<tr><td>5</td><td>직원명5</td></tr>
+	<tr><td>6</td><td>직원명6</td></tr>
+	<tr><td>7</td><td>직원명7</td></tr>
+	<tr><td>8</td><td>직원명8</td></tr>
+	<tr><td>9</td><td>직원명9</td></tr>
+	<tr><td>10</td><td>직원명10</td></tr>
+	</tbody>
+</body>
+</html>

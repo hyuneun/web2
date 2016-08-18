@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!--  <script type="text/javascript" src="js/jquery.js"></script>	-->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
+<style type="text/css">
+	.good {
+		font-size: 50px;
+	}
+</style>
+<script type="text/javascript">
+	/* window.onload = function(){
+	 alert("as")
+	 } */
+
+	//jQuery(document).ready();//둘다같다
+	$(document).ready(function() {
+		//alert("asd")
+		$("*").css("border", "1px solid #f00");//문서전체선택
+		$("span").css("border", "3px dotted blue"); //태그(요소:element)를 선택
+		$("#content").css("background-color", "cyan"); //ID를 선택
+		$(".my").css("border", "5px solid yellow");//클래스를선택
+		$("i > .my").css("color", "red");//i태그안에있는my
+	});
+	$(function() {//document.ready 생략
+		//$(".kor").css("color", "blue");
+		//$(".kor").addClass("good")
+		$(".kor").css("color", "blue").addClass("good")//메소드체인 - 한대상을 잡아서 계속적으로 메소드를 줄수있다.
+	});
+</script>
+</head>
+<body>
+	<h2 class="good">jquery 연습</h2>
+	<p class="my">매우매우매우더운여름</p>
+	<div>
+		<div id="content">가을이오겟지</div>
+	</div>
+	<span>강남역</span>
+	<i><span class="my">12번출구</span></i>
+	<b class="kor">대한민국</b>
+
+</body>
+</html>
